@@ -43,7 +43,7 @@ public class RedesController {
 				} catch (IOException e) {
 					e.printStackTrace();
 					}
-			try {
+
 				StringBuffer buffer = new StringBuffer();
 				if(so.contains("Windows")) {
 					buffer.append("ipconfig");
@@ -51,7 +51,8 @@ public class RedesController {
 					buffer.append("ifconfig");
 				}
 				
-				Process processoCmd = Runtime.getRuntime().exec(buffer.toString());
+				try {
+				Process	processoCmd = Runtime.getRuntime().exec(buffer.toString());		
 				InputStream fluxo = processoCmd.getInputStream();
 				InputStreamReader leitor = new InputStreamReader(fluxo);
 				BufferedReader buffer2 = new BufferedReader(leitor);
@@ -68,19 +69,17 @@ public class RedesController {
 				}
 					if(linha != null && linha.contains("IPv4") || linha.contains("inet ")) {
 					System.out.println(bufferNovo);
-					System.out.println(linha+"\n");
+					System.out.println(linha + "\n");
 				}
 					}
 				buffer2.close();
 				leitor.close();
 				fluxo.close();
 				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		
-
-
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			
 	}
 	
 	
@@ -105,7 +104,7 @@ public class RedesController {
 						} catch (IOException e) {
 							e.printStackTrace();
 							}
-					try {
+					
 						StringBuffer buffer = new StringBuffer();
 						if(so.contains("Windows")) {
 							buffer.append("ping -4 -n 10 www.google.com.br");
@@ -113,6 +112,7 @@ public class RedesController {
 							buffer.append("ping -4 -c 10 www.google.com.br");
 						}
 						
+					try {
 						Process processoCmd = Runtime.getRuntime().exec(buffer.toString());
 						InputStream fluxo = processoCmd.getInputStream();
 						InputStreamReader leitor = new InputStreamReader(fluxo);
