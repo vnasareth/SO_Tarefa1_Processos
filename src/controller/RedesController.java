@@ -79,6 +79,7 @@ public class RedesController {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				System.exit(0);
 			
 	}
 	
@@ -133,6 +134,8 @@ public class RedesController {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
+					System.exit(0);
 						} 
+			
 }
 	
